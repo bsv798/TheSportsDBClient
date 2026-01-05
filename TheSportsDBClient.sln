@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheSportsDB", "TheSportsDB\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheSportsDBTests", "TheSportsDBTests\TheSportsDBTests.csproj", "{4215B30B-2931-43FA-2656-4C5C7AF46F61}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheSportsDBClientGenerator", "TheSportsDBClientGenerator\TheSportsDBClientGenerator.csproj", "{6B518ED6-807C-4464-96FF-54E4C668212E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{4215B30B-2931-43FA-2656-4C5C7AF46F61}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4215B30B-2931-43FA-2656-4C5C7AF46F61}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4215B30B-2931-43FA-2656-4C5C7AF46F61}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B518ED6-807C-4464-96FF-54E4C668212E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B518ED6-807C-4464-96FF-54E4C668212E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B518ED6-807C-4464-96FF-54E4C668212E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B518ED6-807C-4464-96FF-54E4C668212E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
