@@ -20,7 +20,7 @@
 #pragma warning disable 8625 // Disable "CS8625 Cannot convert null literal to non-nullable reference type"
 #pragma warning disable 8765 // Disable "CS8765 Nullability of type of parameter doesn't match overridden member (possibly because of nullability attributes)."
 
-namespace TheSportsDBClientGenerator
+namespace TheSportsDB
 {
     using System = global::System;
 
@@ -64,7 +64,7 @@ namespace TheSportsDBClientGenerator
 
         protected Newtonsoft.Json.JsonSerializerSettings JsonSerializerSettings { get { return _instanceSettings ?? _settings.Value; } }
 
-        static partial void UpdateJsonSerializerSettings(Newtonsoft.Json.JsonSerializerSettings settings);
+        static partial void UpdateJsonSerializerSettings(Newtonsoft.Json.JsonSerializerSettings settings); static partial void UpdateJsonSerializerSettings(Newtonsoft.Json.JsonSerializerSettings settings) { settings.ContractResolver = new CustomContractResolver(); } public class CustomContractResolver : Newtonsoft.Json.Serialization.DefaultContractResolver { protected override Newtonsoft.Json.Serialization.JsonProperty CreateProperty(System.Reflection.MemberInfo member, Newtonsoft.Json.MemberSerialization memberSerialization) { var property = base.CreateProperty(member, memberSerialization); if (property.Required == Newtonsoft.Json.Required.DisallowNull) { property.Required = Newtonsoft.Json.Required.Default; } return property; } }
 
         partial void Initialize();
 
@@ -125,7 +125,7 @@ namespace TheSportsDBClientGenerator
 
                     PrepareRequest(client_, request_, url_);
 
-                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var response_ = await client_.SendAsync(request_, cancellationToken).ConfigureAwait(false);
                     var disposeResponse_ = true;
                     try
                     {
@@ -241,7 +241,7 @@ namespace TheSportsDBClientGenerator
 
                     PrepareRequest(client_, request_, url_);
 
-                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var response_ = await client_.SendAsync(request_, cancellationToken).ConfigureAwait(false);
                     var disposeResponse_ = true;
                     try
                     {
@@ -339,7 +339,7 @@ namespace TheSportsDBClientGenerator
 
                     PrepareRequest(client_, request_, url_);
 
-                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var response_ = await client_.SendAsync(request_, cancellationToken).ConfigureAwait(false);
                     var disposeResponse_ = true;
                     try
                     {
@@ -437,7 +437,7 @@ namespace TheSportsDBClientGenerator
 
                     PrepareRequest(client_, request_, url_);
 
-                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var response_ = await client_.SendAsync(request_, cancellationToken).ConfigureAwait(false);
                     var disposeResponse_ = true;
                     try
                     {
@@ -535,7 +535,7 @@ namespace TheSportsDBClientGenerator
 
                     PrepareRequest(client_, request_, url_);
 
-                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var response_ = await client_.SendAsync(request_, cancellationToken).ConfigureAwait(false);
                     var disposeResponse_ = true;
                     try
                     {
@@ -609,7 +609,7 @@ namespace TheSportsDBClientGenerator
         public virtual async System.Threading.Tasks.Task<TableResponse> GetTableByIdAsync(int l, string s, System.Threading.CancellationToken cancellationToken)
         {
             if (l == null)
-                throw new System.ArgumentNullException("l");
+                ;
 
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -625,7 +625,7 @@ namespace TheSportsDBClientGenerator
                     // Operation Path: "lookuptable.php"
                     urlBuilder_.Append("lookuptable.php");
                     urlBuilder_.Append('?');
-                    urlBuilder_.Append(System.Uri.EscapeDataString("l")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(l, System.Globalization.CultureInfo.InvariantCulture))).Append('&');
+                    if (l != null) urlBuilder_.Append(System.Uri.EscapeDataString("l")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(l, System.Globalization.CultureInfo.InvariantCulture))).Append('&');
                     if (s != null)
                     {
                         urlBuilder_.Append(System.Uri.EscapeDataString("s")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(s, System.Globalization.CultureInfo.InvariantCulture))).Append('&');
@@ -639,7 +639,7 @@ namespace TheSportsDBClientGenerator
 
                     PrepareRequest(client_, request_, url_);
 
-                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var response_ = await client_.SendAsync(request_, cancellationToken).ConfigureAwait(false);
                     var disposeResponse_ = true;
                     try
                     {
@@ -737,7 +737,7 @@ namespace TheSportsDBClientGenerator
 
                     PrepareRequest(client_, request_, url_);
 
-                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var response_ = await client_.SendAsync(request_, cancellationToken).ConfigureAwait(false);
                     var disposeResponse_ = true;
                     try
                     {
@@ -835,7 +835,7 @@ namespace TheSportsDBClientGenerator
 
                     PrepareRequest(client_, request_, url_);
 
-                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var response_ = await client_.SendAsync(request_, cancellationToken).ConfigureAwait(false);
                     var disposeResponse_ = true;
                     try
                     {
@@ -933,7 +933,7 @@ namespace TheSportsDBClientGenerator
 
                     PrepareRequest(client_, request_, url_);
 
-                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var response_ = await client_.SendAsync(request_, cancellationToken).ConfigureAwait(false);
                     var disposeResponse_ = true;
                     try
                     {
@@ -1031,7 +1031,7 @@ namespace TheSportsDBClientGenerator
 
                     PrepareRequest(client_, request_, url_);
 
-                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var response_ = await client_.SendAsync(request_, cancellationToken).ConfigureAwait(false);
                     var disposeResponse_ = true;
                     try
                     {
@@ -1129,7 +1129,7 @@ namespace TheSportsDBClientGenerator
 
                     PrepareRequest(client_, request_, url_);
 
-                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var response_ = await client_.SendAsync(request_, cancellationToken).ConfigureAwait(false);
                     var disposeResponse_ = true;
                     try
                     {
@@ -1227,7 +1227,7 @@ namespace TheSportsDBClientGenerator
 
                     PrepareRequest(client_, request_, url_);
 
-                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var response_ = await client_.SendAsync(request_, cancellationToken).ConfigureAwait(false);
                     var disposeResponse_ = true;
                     try
                     {
@@ -1325,7 +1325,7 @@ namespace TheSportsDBClientGenerator
 
                     PrepareRequest(client_, request_, url_);
 
-                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var response_ = await client_.SendAsync(request_, cancellationToken).ConfigureAwait(false);
                     var disposeResponse_ = true;
                     try
                     {
@@ -1423,7 +1423,7 @@ namespace TheSportsDBClientGenerator
 
                     PrepareRequest(client_, request_, url_);
 
-                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var response_ = await client_.SendAsync(request_, cancellationToken).ConfigureAwait(false);
                     var disposeResponse_ = true;
                     try
                     {
@@ -1521,7 +1521,7 @@ namespace TheSportsDBClientGenerator
 
                     PrepareRequest(client_, request_, url_);
 
-                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var response_ = await client_.SendAsync(request_, cancellationToken).ConfigureAwait(false);
                     var disposeResponse_ = true;
                     try
                     {
@@ -1619,7 +1619,7 @@ namespace TheSportsDBClientGenerator
 
                     PrepareRequest(client_, request_, url_);
 
-                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var response_ = await client_.SendAsync(request_, cancellationToken).ConfigureAwait(false);
                     var disposeResponse_ = true;
                     try
                     {
@@ -1717,7 +1717,7 @@ namespace TheSportsDBClientGenerator
 
                     PrepareRequest(client_, request_, url_);
 
-                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var response_ = await client_.SendAsync(request_, cancellationToken).ConfigureAwait(false);
                     var disposeResponse_ = true;
                     try
                     {
@@ -1815,7 +1815,7 @@ namespace TheSportsDBClientGenerator
 
                     PrepareRequest(client_, request_, url_);
 
-                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var response_ = await client_.SendAsync(request_, cancellationToken).ConfigureAwait(false);
                     var disposeResponse_ = true;
                     try
                     {
@@ -1913,7 +1913,7 @@ namespace TheSportsDBClientGenerator
 
                     PrepareRequest(client_, request_, url_);
 
-                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var response_ = await client_.SendAsync(request_, cancellationToken).ConfigureAwait(false);
                     var disposeResponse_ = true;
                     try
                     {
@@ -2011,7 +2011,7 @@ namespace TheSportsDBClientGenerator
 
                     PrepareRequest(client_, request_, url_);
 
-                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var response_ = await client_.SendAsync(request_, cancellationToken).ConfigureAwait(false);
                     var disposeResponse_ = true;
                     try
                     {
@@ -2101,7 +2101,7 @@ namespace TheSportsDBClientGenerator
 
                     PrepareRequest(client_, request_, url_);
 
-                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var response_ = await client_.SendAsync(request_, cancellationToken).ConfigureAwait(false);
                     var disposeResponse_ = true;
                     try
                     {
@@ -2191,7 +2191,7 @@ namespace TheSportsDBClientGenerator
 
                     PrepareRequest(client_, request_, url_);
 
-                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var response_ = await client_.SendAsync(request_, cancellationToken).ConfigureAwait(false);
                     var disposeResponse_ = true;
                     try
                     {
@@ -2281,7 +2281,7 @@ namespace TheSportsDBClientGenerator
 
                     PrepareRequest(client_, request_, url_);
 
-                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var response_ = await client_.SendAsync(request_, cancellationToken).ConfigureAwait(false);
                     var disposeResponse_ = true;
                     try
                     {
@@ -2385,7 +2385,7 @@ namespace TheSportsDBClientGenerator
 
                     PrepareRequest(client_, request_, url_);
 
-                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var response_ = await client_.SendAsync(request_, cancellationToken).ConfigureAwait(false);
                     var disposeResponse_ = true;
                     try
                     {
@@ -2495,7 +2495,7 @@ namespace TheSportsDBClientGenerator
 
                     PrepareRequest(client_, request_, url_);
 
-                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var response_ = await client_.SendAsync(request_, cancellationToken).ConfigureAwait(false);
                     var disposeResponse_ = true;
                     try
                     {
@@ -2571,7 +2571,7 @@ namespace TheSportsDBClientGenerator
         public virtual async System.Threading.Tasks.Task<TeamsData> SearchAllTeamsAsync(string l, string c, string s, System.Threading.CancellationToken cancellationToken)
         {
             if (l == null)
-                throw new System.ArgumentNullException("l");
+                ;
 
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -2587,7 +2587,7 @@ namespace TheSportsDBClientGenerator
                     // Operation Path: "search_all_teams.php"
                     urlBuilder_.Append("search_all_teams.php");
                     urlBuilder_.Append('?');
-                    urlBuilder_.Append(System.Uri.EscapeDataString("l")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(l, System.Globalization.CultureInfo.InvariantCulture))).Append('&');
+                    if (l != null) urlBuilder_.Append(System.Uri.EscapeDataString("l")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(l, System.Globalization.CultureInfo.InvariantCulture))).Append('&');
                     if (c != null)
                     {
                         urlBuilder_.Append(System.Uri.EscapeDataString("c")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(c, System.Globalization.CultureInfo.InvariantCulture))).Append('&');
@@ -2605,7 +2605,7 @@ namespace TheSportsDBClientGenerator
 
                     PrepareRequest(client_, request_, url_);
 
-                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var response_ = await client_.SendAsync(request_, cancellationToken).ConfigureAwait(false);
                     var disposeResponse_ = true;
                     try
                     {
@@ -2703,7 +2703,7 @@ namespace TheSportsDBClientGenerator
 
                     PrepareRequest(client_, request_, url_);
 
-                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var response_ = await client_.SendAsync(request_, cancellationToken).ConfigureAwait(false);
                     var disposeResponse_ = true;
                     try
                     {
@@ -2801,7 +2801,7 @@ namespace TheSportsDBClientGenerator
 
                     PrepareRequest(client_, request_, url_);
 
-                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var response_ = await client_.SendAsync(request_, cancellationToken).ConfigureAwait(false);
                     var disposeResponse_ = true;
                     try
                     {
@@ -2899,7 +2899,7 @@ namespace TheSportsDBClientGenerator
 
                     PrepareRequest(client_, request_, url_);
 
-                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var response_ = await client_.SendAsync(request_, cancellationToken).ConfigureAwait(false);
                     var disposeResponse_ = true;
                     try
                     {
@@ -2997,7 +2997,7 @@ namespace TheSportsDBClientGenerator
 
                     PrepareRequest(client_, request_, url_);
 
-                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var response_ = await client_.SendAsync(request_, cancellationToken).ConfigureAwait(false);
                     var disposeResponse_ = true;
                     try
                     {
@@ -3095,7 +3095,7 @@ namespace TheSportsDBClientGenerator
 
                     PrepareRequest(client_, request_, url_);
 
-                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var response_ = await client_.SendAsync(request_, cancellationToken).ConfigureAwait(false);
                     var disposeResponse_ = true;
                     try
                     {
@@ -3194,7 +3194,7 @@ namespace TheSportsDBClientGenerator
                     }
                     if (l != null)
                     {
-                        urlBuilder_.Append(System.Uri.EscapeDataString("l")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(l, System.Globalization.CultureInfo.InvariantCulture))).Append('&');
+                        if (l != null) urlBuilder_.Append(System.Uri.EscapeDataString("l")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(l, System.Globalization.CultureInfo.InvariantCulture))).Append('&');
                     }
                     urlBuilder_.Length--;
 
@@ -3205,7 +3205,7 @@ namespace TheSportsDBClientGenerator
 
                     PrepareRequest(client_, request_, url_);
 
-                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var response_ = await client_.SendAsync(request_, cancellationToken).ConfigureAwait(false);
                     var disposeResponse_ = true;
                     try
                     {
@@ -3309,7 +3309,7 @@ namespace TheSportsDBClientGenerator
 
                     PrepareRequest(client_, request_, url_);
 
-                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var response_ = await client_.SendAsync(request_, cancellationToken).ConfigureAwait(false);
                     var disposeResponse_ = true;
                     try
                     {
@@ -3419,7 +3419,7 @@ namespace TheSportsDBClientGenerator
 
                     PrepareRequest(client_, request_, url_);
 
-                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var response_ = await client_.SendAsync(request_, cancellationToken).ConfigureAwait(false);
                     var disposeResponse_ = true;
                     try
                     {
@@ -3514,7 +3514,7 @@ namespace TheSportsDBClientGenerator
                     urlBuilder_.Append(System.Uri.EscapeDataString("d")).Append('=').Append(System.Uri.EscapeDataString(d.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture))).Append('&');
                     if (l != null)
                     {
-                        urlBuilder_.Append(System.Uri.EscapeDataString("l")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(l, System.Globalization.CultureInfo.InvariantCulture))).Append('&');
+                        if (l != null) urlBuilder_.Append(System.Uri.EscapeDataString("l")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(l, System.Globalization.CultureInfo.InvariantCulture))).Append('&');
                     }
                     if (s != null)
                     {
@@ -3529,7 +3529,7 @@ namespace TheSportsDBClientGenerator
 
                     PrepareRequest(client_, request_, url_);
 
-                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var response_ = await client_.SendAsync(request_, cancellationToken).ConfigureAwait(false);
                     var disposeResponse_ = true;
                     try
                     {
@@ -4316,7 +4316,7 @@ namespace TheSportsDBClientGenerator
         /// Time of the event in UTC.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("strTime", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.TimeSpan? StrTime { get; set; }
+        public System.DateTimeOffset? StrTime { get; set; }
 
         /// <summary>
         /// Local time of the event, adjusted for time zone.
@@ -6469,7 +6469,7 @@ namespace TheSportsDBClientGenerator
         /// Time of the event broadcast.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("strTime", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.TimeSpan StrTime { get; set; }
+        public System.DateTimeOffset StrTime { get; set; }
 
         /// <summary>
         /// Date of the event broadcast.

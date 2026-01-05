@@ -17,13 +17,7 @@ namespace TheSportsDbTests
         {
             var assembly = Assembly.GetExecutingAssembly();
             var fullResourceName = $"{assembly.GetName().Name}.TestData.{resourceName}";
-            using var stream = assembly.GetManifestResourceStream(fullResourceName);
-
-            if (stream == null)
-            {
-                throw new FileNotFoundException($"Embedded resource не найден: {fullResourceName}");
-            }
-
+            using var stream = assembly.GetManifestResourceStream(fullResourceName) ?? throw new FileNotFoundException($"Embedded resource not found: {fullResourceName}");
             using var reader = new StreamReader(stream);
 
             return reader.ReadToEnd();
@@ -65,7 +59,7 @@ namespace TheSportsDbTests
                 .ReturnsAsync((HttpRequestMessage request, CancellationToken token) =>
                 {
                     var code = statusCode;
-                    var jsonResourceName = request.RequestUri.PathAndQuery.Split("/")[^1].Replace("&", "_").Replace("?", "_") + ".json";
+                    var jsonResourceName = request.RequestUri?.PathAndQuery.Split("/")[^1].Replace("&", "_").Replace("?", "_") + ".json";
                     var json = "";
 
                     try
