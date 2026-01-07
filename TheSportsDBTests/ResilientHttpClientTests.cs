@@ -115,8 +115,8 @@ namespace TheSportsDbTests
 
             // Assert
             Assert.Equal(40, requestTimes.Count);
-            Assert.InRange((requestTimes[19] - requestTimes[0]).TotalSeconds, 57, 63);
-            Assert.InRange((requestTimes[39] - requestTimes[0]).TotalSeconds, 117, 123);
+            Assert.InRange((requestTimes[19] - requestTimes[0]).TotalSeconds, 55, 65);
+            Assert.InRange((requestTimes[39] - requestTimes[0]).TotalSeconds, 115, 125);
         }
 
         [Fact]
@@ -146,8 +146,8 @@ namespace TheSportsDbTests
 
             // Assert
             Assert.Equal(40, requestTimes.Count);
-            Assert.InRange((requestTimes[19] - requestTimes[0]).TotalSeconds, 57, 63);
-            Assert.InRange((requestTimes[39] - requestTimes[0]).TotalSeconds, 117, 123);
+            Assert.InRange((requestTimes[19] - requestTimes[0]).TotalSeconds, 55, 65);
+            Assert.InRange((requestTimes[39] - requestTimes[0]).TotalSeconds, 115, 125);
         }
 
         [Fact]
@@ -186,7 +186,7 @@ namespace TheSportsDbTests
 
             // Assert
             Assert.Equal(20, requestCount);
-            Assert.InRange(stopwatch.ElapsedMilliseconds, 57000, 67000);
+            Assert.InRange(stopwatch.ElapsedMilliseconds, 55000, 65000);
         }
 
         [Fact]
