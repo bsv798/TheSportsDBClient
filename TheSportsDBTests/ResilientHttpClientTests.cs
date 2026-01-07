@@ -9,7 +9,7 @@ namespace TheSportsDbTests
     {
         public ResilientHttpClientTests()
         {
-            ResilientHttpClient.ResetPolly();
+            ResilientHttpClient.InitializePolly();
         }
 
         [Fact]
@@ -202,19 +202,20 @@ namespace TheSportsDbTests
             var tsdbClient = new TheSportsDBClientV1("123", resilientHttpClient);
 
             // Act
-            Func<Task<LeaguesResponse>> act = async () =>
+            async Task<LeaguesResponse> act()
             {
                 try
                 {
                     return await tsdbClient.GetLeagueByIdAsync(4444);
-                } catch (ApiException ex)
-                {
-                    throw ex.InnerException;
                 }
-            };
+                catch (ApiException ex)
+                {
+                    throw ex.InnerException ?? ex;
+                }
+            }
 
             // Assert
-            await Assert.ThrowsAnyAsync<JsonException>(act);
+            await Assert.ThrowsAnyAsync<JsonException>((Func<Task<LeaguesResponse>>)act);
         }
 
         [Fact]
@@ -232,10 +233,10 @@ namespace TheSportsDbTests
             var resilientHttpClient = new ResilientHttpClient(mockHandler.Object);
 
             // Act
-            Func<Task<HttpResponseMessage>> act = async () => await resilientHttpClient.SendAsync(new HttpRequestMessage(HttpMethod.Get, "test"), CancellationToken.None);
+            async Task<HttpResponseMessage> act() => await resilientHttpClient.SendAsync(new HttpRequestMessage(HttpMethod.Get, "test"), CancellationToken.None);
 
             // Assert
-            await Assert.ThrowsAnyAsync<InvalidOperationException>(act);
+            await Assert.ThrowsAnyAsync<InvalidOperationException>((Func<Task<HttpResponseMessage>>)act);
             Assert.Equal(0, attempts);
         }
 

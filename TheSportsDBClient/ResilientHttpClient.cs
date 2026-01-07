@@ -1,8 +1,6 @@
 ﻿using Polly;
 using Polly.RateLimit;
-using System;
 using System.Net;
-using System.Net.Http;
 using System.Runtime.CompilerServices;
 
 [assembly: InternalsVisibleTo("TheSportsDbTests")]
@@ -11,16 +9,13 @@ namespace TheSportsDBClient
 {
     internal class ResilientHttpClient : HttpClient
     {
-        private static AsyncPolicy RateLimiterPolicy;
-        private static AsyncPolicy RateLimiterRetryPolicy;
-        private static AsyncPolicy<HttpResponseMessage> ExceptionRetryPolicy;
         private static AsyncPolicy<HttpResponseMessage> CombinedPolicy;
 
         private readonly HttpClient _httpClient;
 
         static ResilientHttpClient()
         {
-            ResetPolly();
+            CombinedPolicy = InitializePolly();
         }
 
         public ResilientHttpClient(HttpClient httpClient) : this(httpClient, new HttpClientHandler())
@@ -45,11 +40,11 @@ namespace TheSportsDBClient
             _httpClient = new HttpClient();
         }
 
-        internal static void ResetPolly()
+        internal static AsyncPolicy<HttpResponseMessage> InitializePolly()
         {
-            RateLimiterPolicy = Policy
+            var rateLimiterPolicy = Policy
                         .RateLimitAsync(20, TimeSpan.FromMinutes(1));
-            RateLimiterRetryPolicy = Policy
+            var rateLimiterRetryPolicy = Policy
                         .Handle<RateLimitRejectedException>()
                         .WaitAndRetryForeverAsync(
                             sleepDurationProvider: (attempt, exception, context) =>
@@ -63,7 +58,7 @@ namespace TheSportsDBClient
                                 return Task.CompletedTask;
                             }
                         );
-            ExceptionRetryPolicy = Policy
+            var exceptionRetryPolicy = Policy
                         .Handle<HttpRequestException>()
                         .OrResult<HttpResponseMessage>(response =>
                         {
@@ -80,7 +75,9 @@ namespace TheSportsDBClient
                                 return Task.CompletedTask;
                             }
                         );
-            CombinedPolicy = RateLimiterRetryPolicy.WrapAsync(RateLimiterPolicy).WrapAsync(ExceptionRetryPolicy);
+            CombinedPolicy = rateLimiterRetryPolicy.WrapAsync(rateLimiterPolicy).WrapAsync(exceptionRetryPolicy);
+
+            return CombinedPolicy;
         }
 
         public override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)

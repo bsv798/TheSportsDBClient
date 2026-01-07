@@ -11,7 +11,7 @@ namespace TheSportsDbTests
 
         public TheSportsDbClientTests()
         {
-            ResilientHttpClient.ResetPolly();
+            ResilientHttpClient.InitializePolly();
 
             var mockHandler = TestHelper.CreateMockHandlerWithJsonResource();
             var httpClient = new ResilientHttpClient(mockHandler.Object);
@@ -156,11 +156,11 @@ namespace TheSportsDbTests
         [Fact(Skip = "TODO Add method GetResultsByPlayerIdAsync")]
         public async Task GetResultsByPlayerIdAsync()
         {
-            //// Act
-            //var result = await _client.play  // playerresults????
+            // Act
+            var result = await _client.GetEventResultsAsync(0);
 
-            //// Assert
-            //Assert.NotNull(result);
+            // Assert
+            Assert.NotNull(result);
         }
 
         [Fact]
@@ -288,11 +288,11 @@ namespace TheSportsDbTests
         [Fact(Skip = "TODO Add parameter description to method SearchAllSeasonsAsync")]
         public async Task SearchAllSeasonsAsyncDescription()
         {
-            //// Act
-            //var result = await _client.SearchAllSeasonsAsync("4328", null, null, 1);
+            // Act
+            var result = await _client.SearchAllSeasonsAsync("4328", null, null);
 
-            //// Assert
-            //Assert.NotNull(result);
+            // Assert
+            Assert.NotNull(result);
         }
 
         [Fact]
