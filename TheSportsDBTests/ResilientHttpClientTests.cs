@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics;
 using System.Net;
 using Newtonsoft.Json;
-using TheSportsDB;
+using TheSportsDBClient;
 
 namespace TheSportsDbTests
 {

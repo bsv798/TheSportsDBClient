@@ -7,7 +7,7 @@ using System.Runtime.CompilerServices;
 
 [assembly: InternalsVisibleTo("TheSportsDbTests")]
 
-namespace TheSportsDB
+namespace TheSportsDBClient
 {
     internal class ResilientHttpClient : HttpClient
     {

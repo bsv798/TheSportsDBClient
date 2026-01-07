@@ -1,6 +1,6 @@
 using System.Net.Sockets;
 using System.Threading.Tasks;
-using TheSportsDB;
+using TheSportsDBClient;
 using Xunit;
 
 namespace TheSportsDbTests

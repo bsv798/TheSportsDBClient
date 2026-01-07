@@ -28,7 +28,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\TheSportsDB\TheSportsDB.csproj" />
+    <ProjectReference Include="..\TheSportsDBClient\TheSportsDBClient.csproj" />
   </ItemGroup>
 
   <ItemGroup>

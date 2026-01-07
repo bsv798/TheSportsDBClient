@@ -1,4 +1,4 @@
-﻿namespace TheSportsDB
+﻿namespace TheSportsDBClient
 {
     public class TheSportsDBClientV1 : InternalOpenapiV1Client
     {

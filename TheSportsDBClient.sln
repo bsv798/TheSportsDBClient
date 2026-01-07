@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.14.36811.4
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheSportsDB", "TheSportsDB\TheSportsDB.csproj", "{D8CEED22-A58B-4856-A9D5-9030F23EBBE7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheSportsDBClient", "TheSportsDBClient\TheSportsDBClient.csproj", "{D8CEED22-A58B-4856-A9D5-9030F23EBBE7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheSportsDBTests", "TheSportsDBTests\TheSportsDBTests.csproj", "{4215B30B-2931-43FA-2656-4C5C7AF46F61}"
 EndProject
