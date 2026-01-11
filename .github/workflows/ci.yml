@@ -3,11 +3,11 @@ name: CI
 on:
   push:
     branches:
-      - rc-
+      - rc-*
       - develop
   pull_request:
     branches:
-      - rc-
+      - rc-*
       - develop
 
 env:
