@@ -18,6 +18,10 @@ namespace TheSportsDBClient
             CombinedPolicy = InitializePolly();
         }
 
+        public ResilientHttpClient() : this(new HttpClient(), new HttpClientHandler())
+        {
+        }
+
         public ResilientHttpClient(HttpClient httpClient) : this(httpClient, new HttpClientHandler())
         {
         }

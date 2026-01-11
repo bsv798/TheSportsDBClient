@@ -4,6 +4,16 @@
     {
         public static readonly string DefaultApiKey = "123";
 
+        public HttpClient HttpClient { get; }
+
+        public TheSportsDBClientV1() : this(DefaultApiKey, new ResilientHttpClient())
+        {
+        }
+
+        public TheSportsDBClientV1(string apiKey) : this(apiKey, new ResilientHttpClient())
+        {
+        }
+
         public TheSportsDBClientV1(HttpClient httpClient) : this(DefaultApiKey, httpClient)
         {
         }
