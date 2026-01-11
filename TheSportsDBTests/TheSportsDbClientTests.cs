@@ -1,3 +1,4 @@
+using System.Net.Http;
 using System.Net.Sockets;
 using System.Threading.Tasks;
 using TheSportsDBClient;
@@ -394,6 +395,21 @@ namespace TheSportsDbTests
         {
             // Act
             var result = await _client.GetEventHighlightsAsync(DateTimeOffset.Parse("2024-07-07"), null, "motorsport");
+
+            // Assert
+            Assert.NotNull(result);
+        }
+
+        // ------------------ v1 Extra ------------------
+
+        [Fact]
+        public async Task GetSeasonAsync()
+        {
+            // Act
+            var mockHandler = TestHelper.CreateMockHandlerWithJsonResource("season_4346_2025.html");
+            var httpClient = new ResilientHttpClient(mockHandler.Object);
+            var client = new TheSportsDBClientV1(httpClient);
+            var result = await client.GetSeason(4346, "2025");
 
             // Assert
             Assert.NotNull(result);

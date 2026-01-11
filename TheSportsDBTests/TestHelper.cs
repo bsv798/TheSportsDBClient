@@ -46,7 +46,7 @@ namespace TheSportsDbTests
             return mockHandler;
         }
 
-        public static Mock<HttpMessageHandler> CreateMockHandlerWithJsonResource(HttpStatusCode statusCode = HttpStatusCode.OK)
+        public static Mock<HttpMessageHandler> CreateMockHandlerWithJsonResource(string? name = null, HttpStatusCode statusCode = HttpStatusCode.OK)
         {
             var mockHandler = new Mock<HttpMessageHandler>();
 
@@ -59,12 +59,18 @@ namespace TheSportsDbTests
                 .ReturnsAsync((HttpRequestMessage request, CancellationToken token) =>
                 {
                     var code = statusCode;
-                    var jsonResourceName = request.RequestUri?.PathAndQuery.Split("/")[^1].Replace("&", "_").Replace("?", "_") + ".json";
-                    var json = "";
+                    var resourceName = name ?? request.RequestUri?.PathAndQuery.Split("/")[^1].Replace("&", "_").Replace("?", "_") + ".json";
+                    var mediaType = resourceName.Split(".")[^1] switch
+                    {
+                        "html" => "application/html",
+                        "json" => "application/json",
+                        _ => "text/plain",
+                    };
+                    var resource = "";
 
                     try
                     {
-                        json = LoadJsonFromEmbeddedResource(jsonResourceName);
+                        resource = LoadJsonFromEmbeddedResource(resourceName);
                     }
                     catch (FileNotFoundException)
                     {
@@ -74,7 +80,7 @@ namespace TheSportsDbTests
                     return new HttpResponseMessage
                     {
                         StatusCode = code,
-                        Content = new StringContent(json, System.Text.Encoding.UTF8, "application/json")
+                        Content = new StringContent(resource, System.Text.Encoding.UTF8, mediaType)
                     };
                 });
 
