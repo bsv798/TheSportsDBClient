@@ -59,25 +59,17 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Create GitHub Release
-        uses: softprops/action-gh-release@v1
-        with:
-          body: ${{ steps.changelog.outputs.changelog }}
-          files: ./artifacts/*.*nupkg
-          draft: false
-          prerelease: ${{ contains(steps.get_version.outputs.VERSION, '-') }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
       - name: Push to NuGet
         run: |
           dotnet nuget push ./artifacts/*.nupkg \
             --api-key ${{ secrets.NUGET_API_KEY }} \
+            --source https://api.nuget.org/v3/index.json
 
       - name: Push symbols to NuGet
         run: |
           dotnet nuget push ./artifacts/*.snupkg \
             --api-key ${{ secrets.NUGET_API_KEY }} \
+            --source https://api.nuget.org/v3/index.json
 
       - name: Add GitHub Packages source
         run: |
@@ -101,3 +93,13 @@ jobs:
           dotnet nuget push ./artifacts/*.snupkg \
             --api-key ${{ secrets.GITHUB_TOKEN }} \
             --source "github"
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          body: ${{ steps.changelog.outputs.changelog }}
+          files: ./artifacts/*.*nupkg
+          draft: false
+          prerelease: ${{ contains(steps.get_version.outputs.VERSION, '-') }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
