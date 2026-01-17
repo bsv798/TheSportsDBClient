@@ -184,7 +184,7 @@ namespace TheSportsDBClient
         /// <param name="f">Filename of the event.</param>
         /// <returns>Successful Response</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<EventsResponse> GetEventByTitleAsync(string e, string s, System.DateTimeOffset? d, string f)
+        public virtual System.Threading.Tasks.Task<EventResponse> GetEventByTitleAsync(string e, string s, System.DateTimeOffset? d, string f)
         {
             return GetEventByTitleAsync(e, s, d, f, System.Threading.CancellationToken.None);
         }
@@ -202,10 +202,10 @@ namespace TheSportsDBClient
         /// <param name="f">Filename of the event.</param>
         /// <returns>Successful Response</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<EventsResponse> GetEventByTitleAsync(string e, string s, System.DateTimeOffset? d, string f, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<EventResponse> GetEventByTitleAsync(string e, string s, System.DateTimeOffset? d, string f, System.Threading.CancellationToken cancellationToken)
         {
             if (e == null)
-                throw new System.ArgumentNullException("e");
+                ;
 
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -221,7 +221,7 @@ namespace TheSportsDBClient
                     // Operation Path: "searchevents.php"
                     urlBuilder_.Append("searchevents.php");
                     urlBuilder_.Append('?');
-                    urlBuilder_.Append(System.Uri.EscapeDataString("e")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(e, System.Globalization.CultureInfo.InvariantCulture))).Append('&');
+                    if (e != null) urlBuilder_.Append(System.Uri.EscapeDataString("e")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(e, System.Globalization.CultureInfo.InvariantCulture))).Append('&');
                     if (s != null)
                     {
                         urlBuilder_.Append(System.Uri.EscapeDataString("s")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(s, System.Globalization.CultureInfo.InvariantCulture))).Append('&');
@@ -261,7 +261,7 @@ namespace TheSportsDBClient
                         var status_ = (int)response_.StatusCode;
                         if (status_ == 200)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<EventsResponse>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            var objectResponse_ = await ReadObjectResponseAsync<EventResponse>(response_, headers_, cancellationToken).ConfigureAwait(false);
                             if (objectResponse_.Object == null)
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
@@ -297,7 +297,7 @@ namespace TheSportsDBClient
         /// <param name="p">Player's name.</param>
         /// <returns>Successful Response</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<PlayersResponse> GetPlayerByNameAsync(string p)
+        public virtual System.Threading.Tasks.Task<PlayerResponse> GetPlayerByNameAsync(string p)
         {
             return GetPlayerByNameAsync(p, System.Threading.CancellationToken.None);
         }
@@ -312,7 +312,7 @@ namespace TheSportsDBClient
         /// <param name="p">Player's name.</param>
         /// <returns>Successful Response</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<PlayersResponse> GetPlayerByNameAsync(string p, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<PlayerResponse> GetPlayerByNameAsync(string p, System.Threading.CancellationToken cancellationToken)
         {
             if (p == null)
                 throw new System.ArgumentNullException("p");
@@ -359,7 +359,7 @@ namespace TheSportsDBClient
                         var status_ = (int)response_.StatusCode;
                         if (status_ == 200)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<PlayersResponse>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            var objectResponse_ = await ReadObjectResponseAsync<PlayerResponse>(response_, headers_, cancellationToken).ConfigureAwait(false);
                             if (objectResponse_.Object == null)
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
@@ -1381,7 +1381,7 @@ namespace TheSportsDBClient
         /// <param name="id">Unique identifier for the event.</param>
         /// <returns>Successful Response</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<EventResponse> GetEventByIdAsync(int id)
+        public virtual System.Threading.Tasks.Task<EventsResponse> GetEventByIdAsync(int id)
         {
             return GetEventByIdAsync(id, System.Threading.CancellationToken.None);
         }
@@ -1396,7 +1396,7 @@ namespace TheSportsDBClient
         /// <param name="id">Unique identifier for the event.</param>
         /// <returns>Successful Response</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<EventResponse> GetEventByIdAsync(int id, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<EventsResponse> GetEventByIdAsync(int id, System.Threading.CancellationToken cancellationToken)
         {
             if (id == null)
                 throw new System.ArgumentNullException("id");
@@ -1443,7 +1443,7 @@ namespace TheSportsDBClient
                         var status_ = (int)response_.StatusCode;
                         if (status_ == 200)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<EventResponse>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            var objectResponse_ = await ReadObjectResponseAsync<EventsResponse>(response_, headers_, cancellationToken).ConfigureAwait(false);
                             if (objectResponse_.Object == null)
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
