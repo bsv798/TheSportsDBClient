@@ -82,6 +82,12 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Push symbols to GitHub Packages
+        run: |
+          dotnet nuget push ./artifacts/*.snupkg \
+            --api-key ${{ secrets.GITHUB_TOKEN }} \
+            --source "github"
+
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v1
         with:
